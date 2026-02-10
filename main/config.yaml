@@ -11,19 +11,18 @@ arch:
 startup: application
 boot: auto
 options:
-  ssh:
-    host: "example.com"
-    port: 22
-    logins:
-      username: homeassistant
-      password: homeassistant
-    path: "/usr/syno/etc/certificate/system/default/"
+  ssh_host: "example.com"
+  ssh_port: 22
+  ssh_logins:
+    username: homeassistant
+    password: homeassistant
+  ssh_path: "/usr/syno/etc/certificate/system/default/"
   copy:
     - name: "Example Copy"
       enabled: true
       ssl_name: "certificate"
       on_host: false
-      # host_address: "example.com"
+      host_address: "example.com"
       # host_port: 0
       # host_username: ""
       # host_password: ""
@@ -44,10 +43,10 @@ schema:
       enabled: bool
       ssl_name: str 
       on_host: bool
-      # host_address:
-      #   type: str?
-      #   # show_if:
-      #   #   on_host: true
+      host_address:
+        type: str?
+        # show_if:
+        #   on_host: true
       # host_port:
       #   type: int?
       #   minimum: 1
