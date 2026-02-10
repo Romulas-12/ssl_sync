@@ -46,24 +46,20 @@ schema:
       on_host: bool
       host_address:
         type: str?
-        format: address
         show_if:
           on_host: true
       host_port:
         type: int?
         minimum: 1
         maximum: 65535
-        format: port
         show_if:
           on_host: true
       host_username: 
         type: str?
-        format: username
         show_if:
           on_host: true
       host_password: 
         type: password?
-        format: password
         show_if:
           on_host: true
       path: str
