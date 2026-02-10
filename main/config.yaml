@@ -1,5 +1,5 @@
 name: SSL Sync
-version: "0.3.4"
+version: "0.3.5"
 slug: ssl_sync
 description: Hello World addon with config
 arch:
@@ -20,12 +20,12 @@ options:
     path: "/usr/syno/etc/certificate/system/default/"
   copy:
     - name: "Example Copy"
+      enabled: true
       host_address: "example.com"
       host_port: 0
       host_username: ""
       host_password: ""
       ssl_name: "certificate"
-      enabled: true
       path: "/ssl"
       convert_to_PFX: false
       ssl_password: ""
@@ -40,12 +40,12 @@ schema:
     path: str
   copy:
     - name: str
-      host_address: str
-      host_port: int
-      host_username: str
-      host_password: password
-      ssl_name: str
-      enabled?: bool
+      enabled: bool
+      host_address?: str
+      host_port?: int
+      host_username?: str
+      host_password?: password
+      ssl_name?: str 
       path: str
       convert_to_PFX?: bool
       ssl_password?: password
