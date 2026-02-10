@@ -18,18 +18,18 @@ options:
       username: homeassistant
       password: homeassistant
     path: "/usr/syno/etc/certificate/system/default/"
-  # copy:
-  #   - name: "Example Copy"
-  #     enabled: true
-  #     on_host: false
-  #     host_address: "example.com"
-  #     host_port: 0
-  #     host_username: ""
-  #     host_password: ""
-  #     ssl_name: "certificate"
-  #     path: "/ssl"
-  #     convert_to_PFX: false
-  #     ssl_password: ""
+  copy:
+    - name: "Example Copy"
+      enabled: true
+      ssl_name: "certificate"
+      on_host: false
+      host_address: "example.com"
+      host_port: 0
+      host_username: ""
+      host_password: ""
+      path: "/ssl"
+      convert_to_PFX: false
+      ssl_password: ""
   sync_interval: 1  # in days
 schema:
   ssh:
@@ -39,40 +39,34 @@ schema:
       username: str
       password: password
     path: str
-  # copy:
-  #   - name: str
-  #     enabled: bool
-  #     on_host: bool
-  #     host_address:
-  #       type: str
-  #       required:
-  #         on_host: true
-  #       format: address
-  #       show_if:
-  #         on_host: true
-  #     host_port:
-  #       type: int
-  #       required:
-  #         on_host: true
-  #       minimum: 1
-  #       maximum: 65535
-  #       format: port
-  #       show_if:
-  #         on_host: true
-  #     host_username: 
-  #       type: str
-  #       required:
-  #         on_host: true
-  #       format: username
-  #       show_if:
-  #         on_host: true
-  #     host_password: 
-  #       type: password
-  #       format: password
-  #       show_if:
-  #         on_host: true
-  #     path: str
-  #     ssl_name?: str  
-  #     convert_to_PFX?: bool
-  #     ssl_password?: password
+  copy:
+    - name: str
+      enabled: bool
+      ssl_name: str 
+      on_host: bool
+      host_address:
+        type: str?
+        format: address
+        show_if:
+          on_host: true
+      host_port:
+        type: int?
+        minimum: 1
+        maximum: 65535
+        format: port
+        show_if:
+          on_host: true
+      host_username: 
+        type: str?
+        format: username
+        show_if:
+          on_host: true
+      host_password: 
+        type: password?
+        format: password
+        show_if:
+          on_host: true
+      path: str
+      convert_to_PFX: bool?
+      ssl_password: password?
   sync_interval: int
