@@ -31,13 +31,12 @@ options:
       ssl_password: ""
   sync_interval: 1  # in days
 schema:
-  ssh:
-    host: str
-    port: int
-    logins:
-      username: str
-      password: password
-    path: str
+  ssh_host: str
+  ssh_port: int
+  ssh_logins:
+    username: str
+    password: password
+  ssh_path: str
   copy:
     - name: str
       enabled: bool
