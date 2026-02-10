@@ -1,9 +1,10 @@
-#!/usr/bin/with-contenv bashio
+#!/usr/bin/env bashio
 
-bashio::log.info "Hello World!"
-bashio::log.info "SSL Sync addon запущено"
+echo "Hello World!"
+echo "SSL Sync addon запущено"
 
 # Keep the addon running
 while true; do
+    echo "Addon працює..."
     sleep 3600
 done
