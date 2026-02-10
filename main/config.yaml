@@ -21,7 +21,6 @@ options:
     - name: "Example Copy"
       enabled: true
       ssl_name: "certificate"
-      on_host: false
       host_address: "example.com"
       host_port: 0
       host_username: ""
@@ -40,8 +39,7 @@ schema:
   copy:
     - name: str
       enabled: bool
-      ssl_name: str 
-      on_host: bool
+      ssl_name: str
       host_address: str?
       host_port: int?
       host_username: str?
