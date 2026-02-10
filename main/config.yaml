@@ -21,6 +21,7 @@ options:
   copy:
     - name: "Example Copy"
       enabled: true
+      on_host: false
       host_address: "example.com"
       host_port: 0
       host_username: ""
@@ -41,12 +42,37 @@ schema:
   copy:
     - name: str
       enabled: bool
-      host_address?: str
-      host_port?: int
-      host_username?: str
-      host_password?: password
-      ssl_name?: str 
+      on_host: bool
+      host_address:
+        type: str
+        required:
+          on_host: true
+        format: address
+        show_if:
+          on_host: true
+      host_port:
+        type: int
+        required:
+          on_host: true
+        minimum: 1
+        maximum: 65535
+        format: port
+        show_if:
+          on_host: true
+      host_username: 
+        type: str
+        required:
+          on_host: true
+        format: username
+        show_if:
+          on_host: true
+      host_password: 
+        type: password
+        format: password
+        show_if:
+          on_host: true
       path: str
+      ssl_name?: str  
       convert_to_PFX?: bool
       ssl_password?: password
   sync_interval: int
