@@ -19,7 +19,6 @@ options:
   ssh_path: "/usr/syno/etc/certificate/system/default/"
   copy:
     - name: "Example Copy"
-      enabled: true
       ssl_name: "certificate"
       host_address: "example.com"
       host_port: 0
@@ -38,7 +37,6 @@ schema:
   ssh_path: str
   copy:
     - name: str
-      enabled: bool
       ssl_name: str
       host_address: str?
       host_port: int?
