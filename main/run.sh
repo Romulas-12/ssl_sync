@@ -1,4 +1,5 @@
-#!/usr/bin/env bashio
+#!/bin/bash
+set -e
 
 echo "Hello World!"
 echo "SSL Sync addon запущено"
