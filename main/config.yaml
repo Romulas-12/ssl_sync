@@ -44,8 +44,8 @@ schema:
       on_host: bool
       host_address:
         type: str?
-        show_if:
-          on_host: true
+      #  show_if:
+      #    on_host: true
       # host_port:
       #   type: int?
       #   minimum: 1
