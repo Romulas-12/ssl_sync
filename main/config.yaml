@@ -1,7 +1,7 @@
 name: SSL Sync
 version: "0.3.6"
 slug: ssl_sync
-description: Hello World addon with config
+description: Synchronize SSL certificates to local or remote hosts
 arch:
   - armhf
   - armv7
@@ -10,6 +10,7 @@ arch:
   - i386
 startup: application
 boot: auto
+
 options:
   ssh_host: "example.com"
   ssh_port: 22
@@ -28,21 +29,57 @@ options:
       convert_to_PFX: false
       ssl_password: ""
   sync_interval: 1  # in days
+
 schema:
-  ssh_host: str
-  ssh_port: int
+  ssh_host:
+    type: str
+    description: "Hostname або IP сервера для SSH-зʼєднання (наприклад: nas.local або 192.168.1.10)"
+
+  ssh_port:
+    type: int
+    description: "Порт SSH. Зазвичай 22"
+
   ssh_logins:
-    username: str
-    password: password
-  ssh_path: str
+    username:
+      type: str
+      description: "Імʼя користувача для SSH-зʼєднання"
+    password:
+      type: password
+      description: "Пароль користувача SSH"
+
+  ssh_path:
+    type: str
+    description: "Шлях до директорії з SSL сертифікатами на віддаленому сервері"
+
   copy:
-    - name: str
-      ssl_name: str
-      host_address: str?
-      host_port: int?
-      host_username: str?
-      host_password: password?
-      path: str
-      convert_to_PFX: bool?
-      ssl_password: password?
-  sync_interval: int
+    - name:
+        type: str
+        description: "Назва правила копіювання (для зручності ідентифікації)"
+      ssl_name:
+        type: str
+        description: "Назва SSL сертифіката або файлу без розширення"
+      host_address:
+        type: str?
+        description: "IP або hostname віддаленого хоста. Якщо не вказано — використовується локальна система"
+      host_port:
+        type: int?
+        description: "Порт SSH для віддаленого хоста. Якщо не вказано — використовується ssh_port"
+      host_username:
+        type: str?
+        description: "Імʼя користувача для віддаленого хоста. Якщо не вказано — використовується ssh_logins.username"
+      host_password:
+        type: password?
+        description: "Пароль для віддаленого хоста. Якщо не вказано — використовується ssh_logins.password"
+      path:
+        type: str
+        description: "Шлях, куди буде скопійовано SSL сертифікати"
+      convert_to_PFX:
+        type: bool?
+        description: "Конвертувати сертифікат у формат PFX (PKCS#12)"
+      ssl_password:
+        type: password?
+        description: "Пароль для PFX-файлу. Використовується тільки якщо convert_to_PFX=true"
+
+  sync_interval:
+    type: int
+    description: "Інтервал синхронізації в днях"
