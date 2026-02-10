@@ -20,11 +20,10 @@ options:
     path: "/usr/syno/etc/certificate/system/default/"
   copy:
     - name: "Example Copy"
-      host:
-        address: "example.com"
-        port: 0
-        username: ""
-        password: ""
+      host_address: "example.com"
+      host_port: 0
+      host_username: ""
+      host_password: ""
       ssl_name: "certificate"
       enabled: true
       path: "/ssl"
@@ -41,11 +40,10 @@ schema:
     path: str
   copy:
     - name: str
-      host?:
-        address: str
-        port: int
-        username: str
-        password: password
+      host_address: str
+      host_port: int
+      host_username: str
+      host_password: password
       ssl_name: str
       enabled?: bool
       path: str
