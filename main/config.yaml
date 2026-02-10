@@ -46,22 +46,22 @@ schema:
       on_host: bool
       host_address:
         type: str?
-        show_if:
-          on_host: true
+        # show_if:
+        #   on_host: true
       host_port:
         type: int?
         minimum: 1
         maximum: 65535
-        show_if:
-          on_host: true
+        # show_if:
+        #   on_host: true
       host_username: 
         type: str?
-        show_if:
-          on_host: true
+        # show_if:
+        #   on_host: true
       host_password: 
         type: password?
-        show_if:
-          on_host: true
+        # show_if:
+        #   on_host: true
       path: str
       convert_to_PFX: bool?
       ssl_password: password?
