@@ -1,5 +1,5 @@
 name: SSL Sync
-version: "0.3.2"
+version: "0.3.3"
 slug: ssl_sync
 description: Hello World addon with config
 arch:
@@ -19,16 +19,17 @@ options:
       password: homeassistant
     path: "/usr/syno/etc/certificate/system/default/"
   copy:
-    - name: "certificate"
-      enabled: false
-      host: ""
-      port: 0
-      logins:
-        username: 
-        password: 
+    - name: "Example Copy"
+      ssl_name: "certificate"
+      enabled: true
+      host: 
+        address: "example.com"
+        port: 0
+        username: ""
+        password: ""
       path: "/ssl"
       convert_to_PFX: false
-      password: ""
+      ssl_password?: ""
   sync_interval: 1  # in days
 schema:
   ssh:
@@ -40,13 +41,13 @@ schema:
     path: str
   copy:
     - name: str
-      enabled: bool
-      host: str
-      port: int
-      logins:
+      enabled?: bool
+      host?:
+        address: str
+        port: int
         username: str
         password: password
       path: str
-      convert_to_PFX: bool
-      password: password
+      convert_to_PFX?: bool
+      password?: password
   sync_interval: int
