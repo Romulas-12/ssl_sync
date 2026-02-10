@@ -21,25 +21,31 @@ def main():
     # Load configuration
     config = load_config()
     
-    username = config.get("username", "admin")
-    password = config.get("password", "")
-    interval = config.get("interval", 60)
-    enabled = config.get("enabled", True)
+    databases = config.get("databases", [])
+    logins = config.get("logins", [])
+    rights = config.get("rights", [])
     
     print(f"Configuration loaded:")
-    print(f"  Username: {username}")
-    print(f"  Password: {'*' * len(password) if password else '(not set)'}")
-    print(f"  Interval: {interval} seconds")
-    print(f"  Enabled: {enabled}")
+    print(f"\nDatabases ({len(databases)}):")
+    for db in databases:
+        print(f"  - {db}")
+    
+    print(f"\nLogins ({len(logins)}):")
+    for login in logins:
+        username = login.get('username', '')
+        password = login.get('password', '')
+        print(f"  - {username}: {'*' * len(password)}")
+    
+    print(f"\nRights ({len(rights)}):")
+    for right in rights:
+        db = right.get('database', '')
+        user = right.get('username', '')
+        print(f"  - {user} -> {db}")
     
     # Main loop
+    print("\nAddon is running...")
     while True:
-        if enabled:
-            print(f"Addon is working... (interval: {interval}s)")
-        else:
-            print("Addon is disabled")
-        
-        time.sleep(interval)
+        time.sleep(3600)
 
 
 if __name__ == "__main__":
