@@ -1,11 +1,9 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-# Install Python
-RUN apk add --no-cache python3
-RUN pip install --no-cache-dir paramiko
-RUN pip install --no-cache-dir scp
-RUN pip install --no-cache-dir pyopenssl
+# Install Python and dependencies
+RUN apk add --no-cache python3 py3-pip \
+    && python3 -m pip install --no-cache-dir paramiko scp pyopenssl
 
 # Copy files
 COPY run.sh /
