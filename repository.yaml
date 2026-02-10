@@ -1,3 +1,4 @@
 name: SSL Sync Repository
-url: https://github.com/yourusername/ssl-sync
-maintainer: Your Name
+url: https://github.com/Romulas-12/ssl_sync
+maintainer: Oleksandr Romanenko
+description: A repository for the SSL Sync Home Assistant addon, which synchronizes SSL certificates.

@@ -1,7 +1,7 @@
 name: SSL Sync
-version: "0.1.0"
+version: "0.1.1"
 slug: ssl_sync
-description: Hello World addon
+description: Hello World addon with config
 arch:
   - armhf
   - armv7
@@ -10,3 +10,13 @@ arch:
   - i386
 startup: application
 boot: auto
+options:
+  username: "admin"
+  password: ""
+  interval: 60
+  enabled: true
+schema:
+  username: str
+  password: password
+  interval: int
+  enabled: bool
