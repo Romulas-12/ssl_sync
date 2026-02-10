@@ -1,5 +1,5 @@
 name: SSL Sync
-version: "0.3.1"
+version: "0.3.2"
 slug: ssl_sync
 description: Hello World addon with config
 arch:
@@ -17,13 +17,19 @@ options:
     logins:
       username: homeassistant
       password: homeassistant
-    remote_path: "/usr/syno/etc/certificate/system/default/"
-  local_path: "/ssl"
-  sync_interval: 1  
-  plex:
-    enabled: false
-    ssl_name: "plex_certificate"
-    password: ""
+    path: "/usr/syno/etc/certificate/system/default/"
+  copy:
+    - name: "certificate"
+      enabled: false
+      host: ""
+      port: 0
+      logins:
+        username: 
+        password: 
+      path: "/ssl"
+      convert_to_PFX: false
+      password: ""
+  sync_interval: 1  # in days
 schema:
   ssh:
     host: str
@@ -31,10 +37,16 @@ schema:
     logins:
       username: str
       password: password
-    remote_path: str
-  local_path: str
+    path: str
+  copy:
+    - name: str
+      enabled: bool
+      host: str
+      port: int
+      logins:
+        username: str
+        password: password
+      path: str
+      convert_to_PFX: bool
+      password: password
   sync_interval: int
-  plex:
-    enabled: bool
-    ssl_name: str
-    password: password
