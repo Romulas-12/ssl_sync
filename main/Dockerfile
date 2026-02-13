@@ -10,4 +10,5 @@ COPY run.sh /
 COPY main.py /app/
 RUN chmod a+x /run.sh
 
+ENTRYPOINT [ "/init" ]
 CMD [ "/run.sh" ]
