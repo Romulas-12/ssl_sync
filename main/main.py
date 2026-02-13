@@ -15,17 +15,17 @@ from pathlib import Path
 
 # В Home Assistant аддоні використовується /data/options.json
 # Для локального тестування - data/options.json (відносний шлях)
-CONFIG_FILE = Path("/data/options.json")
-if not CONFIG_FILE.exists():
-    CONFIG_FILE = Path(__file__).parent / "data" / "options.json"
+# CONFIG_FILE = Path("/data/options.json")
+# if not CONFIG_FILE.exists():
+#     CONFIG_FILE = Path(__file__).parent / "data" / "options.json"
 
 
-def load_config():
-    """Load configuration from options.json."""
-    if CONFIG_FILE.exists():
-        with open(CONFIG_FILE, 'r') as f:
-            return json.load(f)
-    return {}
+# def load_config():
+#     """Load configuration from options.json."""
+#     if CONFIG_FILE.exists():
+#         with open(CONFIG_FILE, 'r') as f:
+#             return json.load(f)
+#     return {}
 
 
 # def connect_sftp(host, port, username, password):
@@ -157,9 +157,9 @@ def main():
     # Завантаження конфігурації
     config = load_config()
     
-    if not config:
-        print("Configuration not found!")
-        return
+    # if not config:
+    #     print("Configuration not found!")
+    #     return
     
     # # Отримання всіх параметрів
     # ssh_host = config.get('ssh_host')
@@ -284,7 +284,8 @@ def main():
 
 if __name__ == "__main__":
     while True:
-        main()
+        pass
+        # main()
         # config = load_config()
         # sync_interval = config.get('sync_interval', 1)
         # time.sleep(sync_interval * 86400)
