@@ -11,6 +11,8 @@ arch:
 startup: application
 boot: auto
 init: false
+map:
+  - ssl:rw
 options:
   ssh_host: "example.com"
   ssh_port: 22
