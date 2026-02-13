@@ -17,15 +17,17 @@ options:
     username: homeassistant
     password: homeassistant
   ssh_path: "/usr/syno/etc/certificate/system/default/"
+  ssl_privkey_name: "privkey.pem"
+  ssl_cert_name: "cert.pem"
   copy:
     - name: "Example Copy"
-      ssl_name: "certificate"
       host_address: "example.com"
       host_port: 0
       host_username: ""
       host_password: ""
       path: "/ssl"
       convert_to_PFX: false
+      ssl_name: "certificate"
       ssl_password: ""
   sync_interval: 1  # in days
 schema:
@@ -35,14 +37,16 @@ schema:
     username: str
     password: password
   ssh_path: str
+  ssl_privkey_name: str
+  ssl_cert_name: str
   copy:
     - name: str
-      ssl_name: str
       host_address: str?
       host_port: int?
       host_username: str?
       host_password: password?
       path: str
       convert_to_PFX: bool?
+      ssl_name: str?
       ssl_password: password?
   sync_interval: int

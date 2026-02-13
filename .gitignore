@@ -2,3 +2,7 @@
 *.log
 .vscode/
 .idea/
+/__pycache__/
+main/data/*
+data/
+.venv/
