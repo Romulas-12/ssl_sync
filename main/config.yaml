@@ -1,5 +1,5 @@
 name: SSL Sync
-version: "0.3.6"
+version: "0.5.0"
 slug: ssl_sync
 description: Hello World addon with config
 arch:
