@@ -4,6 +4,7 @@ import json
 import os
 import posixpath
 import stat
+import time
 from pathlib import Path
 
 import paramiko
@@ -168,12 +169,14 @@ def main():
     ssl_privkey_name = config.get('ssl_privkey_name', 'privkey.pem')
     ssl_cert_name = config.get('ssl_cert_name', 'cert.pem')
     copy_configs = config.get('copy', [])
+    sync_interval = config.get('sync_interval', 1)
     
     print(f"=== SSL Sync Configuration ===")
     print(f"SSH Host: {ssh_host}:{ssh_port}")
     print(f"Remote Path: {ssh_path}")
     print(f"Private Key: {ssl_privkey_name}")
     print(f"Certificate: {ssl_cert_name}")
+    print(f"Sync Interval: {sync_interval} days")
     
     # Підключення до SFTP
     ssh, sftp = connect_sftp(
@@ -287,4 +290,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    while True:
+        main()
+        config = load_config()
+        sync_interval = config.get('sync_interval', 1)
+        time.sleep(sync_interval * 86400)
